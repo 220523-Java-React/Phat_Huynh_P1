@@ -20,9 +20,7 @@ public String type;
         this.brand = brand;
         this.type = type;
     }
-    public Car(String brand){
 
-    }
 
 
 
