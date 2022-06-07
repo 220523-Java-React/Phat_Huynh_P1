@@ -4,10 +4,13 @@ import com.revature.model.Car;
 import com.revature.service.CarService;
 import io.javalin.http.Handler;
 
+import java.util.List;
+
 public class CarController {
     CarService carService = new CarService();
     public Handler getAllCars = context -> {
-        context.result(carService.getAllCarsAsString());
+        List<Car> cars = carService.getAllCars();
+        context.json(cars);
 
     };
 
@@ -20,7 +23,7 @@ public class CarController {
       context.json(carService.getCarById(id));
     };
 
-    public Handler setCarId = context ->{
+    public Handler setCar = context ->{
       Car car = context.bodyAsClass(Car.class);
       carService.createNewCar(car);
     };

@@ -9,9 +9,10 @@ public class Driver {
         CarController carController = new CarController();
         Javalin app = Javalin.create().start(8080);
 
+
         app.get("/cars", carController.getAllCars);
         app.get("/cars/{id}", carController.getCarById);
-        app.post("/cars", carController.setCarId);
+        app.post("/cars", carController.setCar);
 
 
     }

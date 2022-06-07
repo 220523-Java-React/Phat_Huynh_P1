@@ -9,6 +9,13 @@ public class CarService {
 
     private List<Car> cars = new ArrayList<>();
 
+    public CarService(){
+
+    }
+    public void createNewCar(Car car){
+        cars.add(car);
+    }
+
     public List<Car> getAllCars(){
         return cars;
 
@@ -22,9 +29,7 @@ public class CarService {
         }
         return null;
     }
-    public void createNewCar(Car car){
-        cars.add(car);
-    }
+
 
     public String getAllCarsAsString(){
         List<Car> cars = getAllCars();
@@ -32,12 +37,15 @@ public class CarService {
 
 
         for (Car car : cars) {
-            builder.append(car.id).append("\n")
-                    .append(car.type).append("\n")
-                    .append("\n");
+            builder.append(car.brand).append("\n")
+                    .append(car.type).append("\n\n");
         }
 //
         return builder.toString();
+    }
+
+    public int carCount(){
+        return cars.size();
     }
 
 
