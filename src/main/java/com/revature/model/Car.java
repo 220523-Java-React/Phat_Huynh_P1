@@ -1,10 +1,21 @@
 package com.revature.model;
 
-public class Car {
-public int id;
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Car implements Serializable {
+private int id;
 public String brand;
 
+public CarColor color;
+private Make make;
+private Model model;
+
 public String type;
+
+    public int getId(){return id;}
+    public Make getMake(){return make;}
+
 
     public Car(){
 
@@ -21,14 +32,33 @@ public String type;
         this.type = type;
     }
 
+    public CarColor getColor(){return color;}
+
+    public Model getModel(){return model;}
 
 
 
-    @Override
-    public String toString() {
-        return "id" + brand + "\n"
-                + "type" + type + "\n";
+    public void setColor(CarColor color){this.color = color;}
+    public void setModel(Model model){
+        this.model = model;
     }
+
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Car car = (Car) o;
+//        return id == car.id && Objects.equals(brand, car.brand) && Objects.equals(type, car.type) && make == car.make
+//                && color ==car.color && model ==car.model;
+//    }
+//
+//
+//
+//    @Override
+//    public String toString() {
+//        return "brand" + brand + "\n"+ "make" + make + "\n" + "type" + type + "\n" + model + "\n" + "type" + color + "\n" +"teessstttt";
+//    }
 
 
 //hello

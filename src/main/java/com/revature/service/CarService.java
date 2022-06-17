@@ -1,52 +1,44 @@
 package com.revature.service;
 
 import com.revature.model.Car;
+import com.revature.model.CarColor;
+import com.revature.model.Make;
+import com.revature.model.Model;
+import com.revature.repository.CarRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarService {
 
-    private List<Car> cars = new ArrayList<>();
+   private CarRepository carRepository;
 
-    public CarService(){
+   public CarService() {
+       carRepository = new CarRepository();
+   }
 
+   public CarService(CarRepository carRepository) {
+       this.carRepository = carRepository;
+   }
+
+   public Car createNewCar(Car car) {
+       return carRepository.create(car);
+   }
+
+   public List<Car> getAllCars() {
+       return carRepository.getAll();
+   }
+
+   public List<Car> getAllCarsByMake(Make make){
+       return carRepository.getAllByMake(make);
+   }
+    public List<Car> getAllCarsByModel(Model model){
+        return carRepository.getAllByModel(model);
     }
-    public void createNewCar(Car car){
-        cars.add(car);
-    }
+   public Car getCarById(int id) {
+       return carRepository.getById(id);
+   }
 
-    public List<Car> getAllCars(){
-        return cars;
-
-    }
-
-    public Car getCarById(int id){
-        for(Car car : cars){
-            if(car.id == id){
-                return car;
-            }
-        }
-        return null;
-    }
-
-
-    public String getAllCarsAsString(){
-        List<Car> cars = getAllCars();
-        StringBuilder builder = new StringBuilder();
-
-
-        for (Car car : cars) {
-            builder.append(car.brand).append("\n")
-                    .append(car.type).append("\n\n");
-        }
-//
-        return builder.toString();
-    }
-
-    public int carCount(){
-        return cars.size();
-    }
 
 
     // return x;
