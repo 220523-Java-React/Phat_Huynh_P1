@@ -1,64 +1,68 @@
 package com.revature.repository;
 
 import com.revature.model.Car;
-import com.revature.model.Make;
-import com.revature.model.Model;
 
+import com.revature.util.ConnectionUtility;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CarRepository implements DAO<Car> {
 
-    private List<Car> cars;
-
-    public CarRepository(){cars=new ArrayList<>();}
-
-    public CarRepository(List<Car> cars) { this.cars = cars;}
-
     @Override
     public Car create(Car car) {
-        if(cars.add(car)){
-            return car;
-        } else {
-            return null;
-        }
 
+        String sql = "insert into cars(make, model, color, year, price) values(?,?,?,?,?)";
 
-    }
+        try(Connection connection = ConnectionUtility.getConnection()){
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, car.getMake());
+            stmt.setString(2,car.getModel());
+            stmt.setString(3,car.getColor());
+            stmt.setInt(4,car.getYear());
+            stmt.setInt(5,car.getPrice());
 
-    @Override
-    public List<Car> getAll(){return cars;}
+            int success = stmt.executeUpdate();
 
-    @Override
-    public Car getById(int id) {
-        for(int i = 0; i <cars.size(); i++){
-            if (cars.get(i).getId() == id) {
-                return cars.get(i);
-            }
+        } catch (SQLException e){
+            e.printStackTrace();
         }
         return null;
     }
 
-    public List<Car> getAllByModel(Model model){
-        List<Car> filteredCars = new ArrayList<>();
+    @Override
+    public List<Car> getAll(){
+        List<Car> cars = new ArrayList<>();
+        String sql = "select * from cars";
 
-        for(Car car: cars){
-            if(car.getModel().equals(model)){
-                filteredCars.add(car);
+        try(Connection connection = ConnectionUtility.getConnection()){
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            ResultSet results = stmt.executeQuery();
+
+            while(results.next()){
+
+                cars.add(new Car()
+                                .setId(results.getInt("id"))
+                        .setMake(results.getString("make"))
+                        .setModel(results.getString("model"))
+                        .setColor(results.getString("color"))
+                        .setYear(results.getInt("year"))
+                        .setPrice(results.getInt("price")));
             }
+        } catch (SQLException e){
+            e.printStackTrace();
         }
-        return filteredCars;
+        return cars;
     }
 
-    public List<Car> getAllByMake(Make make){
-        List<Car> filteredCars = new ArrayList<>();
-
-        for(Car car: cars){
-            if(car.getMake().equals(make)){
-                filteredCars.add(car);
-            }
-        }
-        return filteredCars;
+    @Override
+    public Car getById(int id) {
+        return null;
     }
 
     @Override

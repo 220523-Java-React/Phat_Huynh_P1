@@ -1,5 +1,7 @@
 package com.revature.service;
 
+
+import com.revature.model.Role;
 import com.revature.model.User;
 import com.revature.repository.UserRepository;
 
@@ -14,7 +16,7 @@ public class UserService {
         userRepository = new UserRepository();
     }
 
-    public UserService(List<User> users) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = new UserRepository();
     }
 
@@ -30,14 +32,10 @@ public class UserService {
         return userRepository.getById(id);
     }
 
-    // public boolean deleteUserById(int id){
-    //     for(int i = 0; i < users.size(); i++){
-    //       if(users.get(i).getId() == id){
-    //          users.remove(i);
-    //          return true;
-    //      }
-    //     }
 
-    // return false;
-//}
+    public boolean deleteUserById(int id) {return userRepository.deleteById(id);}
+
+    public List<User> getAllUsersByRole(Role role){
+        return userRepository.getAllByRole(role);
+    }
 }

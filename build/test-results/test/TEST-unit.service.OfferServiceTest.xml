@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="unit.service.OfferServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-22T19:45:43" hostname="DESKTOP-3D197OS" time="0.364">
+  <properties/>
+  <testcase name="whenGivenOfferObjectCreateNewOfferDoesNotThrowAnException()" classname="unit.service.OfferServiceTest" time="0.364"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -15,18 +15,9 @@ public class User implements Serializable {
 
     private String password;
 
-    private Role role = Role.USER;
+    private Role role;
 
     public User(){
-
-    }
-
-
-    public User(String firstname, String lastname, String username, String password){
-        this.firstname = firstname;
-        this.lastname = lastname;
-       this.username = username;
-        this.password = password;
 
     }
 
@@ -34,27 +25,30 @@ public class User implements Serializable {
 
     public int getId() { return id;}
 
-    public void setId(int id) {this.id = id;}
+    public User setId(int id) {
+        this.id = id;
+    return this;}
 
     public String getFirstname() {return firstname;}
 
-    public void setFirstname(String firstname){this.firstname = firstname;}
+    public User setFirstname(String firstname){this.firstname = firstname;
+    return this;}
 
     public String getLastname(){return lastname;}
 
-    public void setLastname(String lastname){this.lastname = lastname;}
+    public User setLastname(String lastname){this.lastname = lastname; return this;}
 
     public String getUsername(){return  username;}
 
-    public void setUsername(String username){this.username = username;}
+    public User setUsername(String username){this.username = username; return this;}
 
     public String getPassword(){return password;}
 
-    public void setPassword(String password){this.password = password;}
+    public User setPassword(String password){this.password = password; return this;}
 
     public Role getRole() { return role;}
 
-    public void setRole(Role role){this.role = role;}
+    public User setRole(Role role){this.role = role; return this;}
 
 
     @Override
@@ -83,9 +77,7 @@ public class User implements Serializable {
     }
 }
 
-enum Role{
-    USER, ADMIN
-}
+
 
 
 

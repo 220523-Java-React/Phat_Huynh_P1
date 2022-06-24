@@ -5,43 +5,42 @@ import java.util.Objects;
 
 public class Car implements Serializable {
 private int id;
-public String brand;
+private String color;
+private String make;
+private String model;
+private int year;
+private int price;
 
-public CarColor color;
-private Make make;
-private Model model;
+  public Car(){
 
-public String type;
-
-    public int getId(){return id;}
-    public Make getMake(){return make;}
+  }
 
 
-    public Car(){
+   public int getId() {return id;}
+    public Car setId(int id){this.id = id; return this;}
 
-   }
+    public String getColor(){return color;}
+    public Car setColor(String color){ this.color = color; return this;}
 
-    public Car(  String brand, String type){
-    this.brand= brand;
-    this.type = type;
-    }
+    public String getMake(){return make;}
+    public Car setMake(String make){this.make = make; return this;}
 
-    public Car(int id, String brand, String type){
-        this.id = id;
-        this.brand = brand;
-        this.type = type;
-    }
+    public String getModel(){return model;}
+    public Car setModel(String model){this.model = model; return this;}
 
-    public CarColor getColor(){return color;}
+    public int getYear(){return year;}
 
-    public Model getModel(){return model;}
+    public Car setYear(int year){this.year = year; return this;}
+    public int getPrice(){return price;}
+    public Car setPrice(int price){this.price = price; return this;}
 
 
 
-    public void setColor(CarColor color){this.color = color;}
-    public void setModel(Model model){
-        this.model = model;
-    }
+
+
+
+
+
 
 
 //    @Override

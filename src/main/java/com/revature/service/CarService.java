@@ -1,9 +1,7 @@
 package com.revature.service;
 
 import com.revature.model.Car;
-import com.revature.model.CarColor;
-import com.revature.model.Make;
-import com.revature.model.Model;
+
 import com.revature.repository.CarRepository;
 
 import java.util.ArrayList;
@@ -29,15 +27,15 @@ public class CarService {
        return carRepository.getAll();
    }
 
-   public List<Car> getAllCarsByMake(Make make){
-       return carRepository.getAllByMake(make);
-   }
-    public List<Car> getAllCarsByModel(Model model){
-        return carRepository.getAllByModel(model);
-    }
-   public Car getCarById(int id) {
-       return carRepository.getById(id);
-   }
+//   public List<Car> getAllCarsByMake(Make make){
+//       return carRepository.getAllByMake(make);
+//   }
+//    public List<Car> getAllCarsByModel(Model model){
+//        return carRepository.getAllByModel(model);
+//    }
+//   public Car getCarById(int id) {
+//       return carRepository.getById(id);
+//   }
 
 
 
